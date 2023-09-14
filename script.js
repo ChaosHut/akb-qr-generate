@@ -45,8 +45,8 @@ function generateQRCodes() {
     qrDiv1.innerHTML = "";
     let qrcode1 = new QRCode(qrDiv1, {
         text: finalData,
-        width: 128,
-        height: 128,
+        width: 256,
+        height: 256,
         correctLevel: QRCode.CorrectLevel.M
     });
 }
