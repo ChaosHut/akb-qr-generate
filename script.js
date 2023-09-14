@@ -38,7 +38,7 @@ function generateQRCodes() {
         document.getElementById('block6').value;
 
     // Die zusammengesetzte Zahlenreihe anzeigen
-    document.getElementById('combinedValue').textContent = "Zusammengesetzte Zahlenreihe: " + finalData;
+    document.getElementById('combinedValue').innerHTML = "Zusammengesetzte Zahlenreihe: <br>" + finalData;
 
     // QR-Code mit qrcode.js erstellen
     let qrDiv1 = document.getElementById('qrcode1');
