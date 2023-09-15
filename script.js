@@ -40,13 +40,9 @@ function generateQRCodes() {
     // Die zusammengesetzte Zahlenreihe anzeigen
     document.getElementById('combinedValue').innerHTML = "Zusammengesetzte Zahlenreihe: <br>" + finalData;
 
-    // QR-Code mit qrcode.js erstellen
+    // QR-Code mit Nayuki QR-Code-Generator erstellen
     let qrDiv1 = document.getElementById('qrcode1');
-    qrDiv1.innerHTML = "";
-    let qrcode1 = new QRCode(qrDiv1, {
-        text: finalData,
-        width: 256,
-        height: 256,
-        correctLevel: QRCode.CorrectLevel.M
-    });
+    let qr = qrcodegen.QrCode.encodeText(finalData, qrcodegen.QrCode.Ecc.MEDIUM);
+    let svg = qr.toSvgString(4);  // 4 ist die Größe des QR-Codes in Pixeln pro Modul
+    qrDiv1.innerHTML = svg;
 }
