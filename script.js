@@ -1,3 +1,5 @@
+"use strict";
+
 function calculateDate() {
     let dateString = document.getElementById('block3').value;
     let dateObj = new Date(dateString.substring(0, 4), dateString.substring(4, 6) - 1, dateString.substring(6, 8));
@@ -28,6 +30,9 @@ function syncTime() {
 }
 
 function generateQRCodes() {
+    const QrCode = qrcodegen.QrCode;  // Abbreviation
+    const QrSegment = qrcodegen.QrSegment;  // Abbreviation
+
     let finalData = 
         document.getElementById('block1').value +
         document.getElementById('block2').value +
@@ -38,15 +43,15 @@ function generateQRCodes() {
 
     document.getElementById('combinedValue').innerHTML = "Zusammengesetzte Zahlenreihe: <br>" + finalData;
 
-    let qr = qrcodegen.QrCode.encodeText(finalData, qrcodegen.QrCode.Ecc.MEDIUM);
-    let canvasElem = document.getElementById('qrcode1');
-    drawCanvas(qr, 4, 4, "#FFFFFF", "#000000", canvasElem);
+    let segs = QrSegment.makeSegments(finalData);
+    let qr = QrCode.encodeSegments(segs, QrCode.Ecc.MEDIUM, 2, 2, -1, false);
+
+    drawCanvas(qr, 8, 4, "#FFFFFF", "#000000", document.getElementById('qrcode1'));
 }
 
 function drawCanvas(qr, scale, border, lightColor, darkColor, canvas) {
-    if (scale <= 0 || border < 0) {
+    if (scale <= 0 || border < 0)
         throw new RangeError("Value out of range");
-    }
     const width = (qr.size + border * 2) * scale;
     canvas.width = width;
     canvas.height = width;
