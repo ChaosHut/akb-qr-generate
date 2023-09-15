@@ -2,11 +2,24 @@
 
 function calculateDate() {
     let dateString = document.getElementById('block3').value;
+    console.log("Ursprüngliches Datum:", dateString);
+    
     let dateObj = new Date(dateString.substring(0, 4), dateString.substring(4, 6) - 1, dateString.substring(6, 8));
+    console.log("Date-Objekt erstellt:", dateObj);
+    
     dateObj.setDate(dateObj.getDate() + 1);
-    let nextDate = dateObj.toISOString().split('T')[0].replace(/-/g, '');
+    console.log("Date-Objekt nach Hinzufügen eines Tages:", dateObj);
+    
+    let year = dateObj.getFullYear();
+    let month = String(dateObj.getMonth() + 1).padStart(2, '0'); // +1, da Monate von 0-11 indiziert sind
+    let day = String(dateObj.getDate()).padStart(2, '0');
+    let nextDate = year + month + day;
+
+    console.log("Nächstes Datum:", nextDate);
+    
     document.getElementById('block5').value = nextDate;
 }
+
 
 function setToday() {
     let today = new Date();
