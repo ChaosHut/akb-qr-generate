@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Dies ist der Viewport-Meta-Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="qrcodegen-v1.8.0-es5.js"></script>
     <title>akb-qr-generate</title>
-    <!-- Andere Meta-Tags, Styles oder Skripte können hier hinzugefügt werden -->
 </head>
+
 <body>
-<!-- Block 1 (z.B. 486622235000 + unbekannte Zahl) -->
-<input type="text" id="block1" placeholder="Block 1" value="486622235000">
-<br>
-<!-- Block 2 -->
-<input type="text" id="block2" placeholder="Zahl Oben auf dem Zettel" value="1006657">
-<br>
-<!-- Block 3 (Datum Erstellung) -->
-<input type="text" id="block3" placeholder="Datum Erstellung" value="20230828">
-<button onclick="setToday()">Heute</button>
-<br>
-<!-- Block 4 (Uhrzeit Erstellung) -->
-<input type="text" id="block4" placeholder="Uhrzeit Erstellung" value="164551" onchange="syncTime()">
-<button onclick="setNow()">Jetzt</button>
-<br>
-<!-- Block 5 (Datum des folgetages?) -->
-<input type="text" id="block5" placeholder="Datum des folgetages?" readonly value="20230829">
-<br>
-<!-- Block 6 (Die selbe Uhrzeit-wahrscheinlich für den Folgetag) -->
-<input type="text" id="block6" placeholder="Uhrzeit für den Folgetag" readonly value="164551">
-<br>
-<button onclick="generateQRCodes()">QR-Codes erstellen</button>
-<div id="qrcode1" style="margin-top: 20px;"></div>
-<div id="combinedValue" style="margin-top: 20px; font-weight: bold;"></div>
-<script src="script.js"></script>
+    <!-- Block 1 (z.B. 486622235000 + unbekannte Zahl) -->
+    <input type="text" id="block1" placeholder="Block 1" value="486622235000">
+    <br>
+    <!-- Block 2 -->
+    <input type="text" id="block2" placeholder="Zahl Oben auf dem Zettel" value="1006657">
+    <br>
+    <!-- Block 3 (Datum Erstellung) -->
+    <input type="text" id="block3" placeholder="Datum Erstellung" value="20230828">
+    <button onclick="setToday()">Heute</button>
+    <br>
+    <!-- Block 4 (Uhrzeit Erstellung) -->
+    <input type="text" id="block4" placeholder="Uhrzeit Erstellung" value="164551" onchange="syncTime()">
+    <button onclick="setNow()">Jetzt</button>
+    <br>
+    <!-- Block 5 (Datum des folgetages?) -->
+    <input type="text" id="block5" placeholder="Datum des folgetages?" readonly value="20230829">
+    <br>
+    <!-- Block 6 (Die selbe Uhrzeit-wahrscheinlich für den Folgetag) -->
+    <input type="text" id="block6" placeholder="Uhrzeit für den Folgetag" readonly value="164551">
+    <br>
+    <button onclick="generateQRCodes()">QR-Codes erstellen</button>
+
+    <!-- Dies wurde von <div> zu <canvas> geändert -->
+    <canvas id="qrcode1" style="margin-top: 20px;"></canvas>
+
+    <div id="combinedValue" style="margin-top: 20px; font-weight: bold;"></div>
+    <script src="script.js"></script>
 </body>
+
 </html>
