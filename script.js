@@ -10,7 +10,7 @@ function setToday() {
     let today = new Date();
     let formattedDate = today.toISOString().split('T')[0].replace(/-/g, '');
     document.getElementById('block3').value = formattedDate;
-    calculateDate();  // aktualisiere Block 5 basierend auf dem neuen Datum
+    calculateDate();
 }
 
 function setNow() {
@@ -19,7 +19,7 @@ function setNow() {
     let minutes = String(now.getMinutes()).padStart(2, '0');
     let seconds = String(now.getSeconds()).padStart(2, '0');
     document.getElementById('block4').value = hours + minutes + seconds;
-    syncTime();  // synchronisiere die Zeit zwischen Block 4 und Block 6
+    syncTime();
 }
 
 function syncTime() {
@@ -28,7 +28,6 @@ function syncTime() {
 }
 
 function generateQRCodes() {
-    // Daten aus den Eingabefeldern zusammensetzen
     let finalData = 
         document.getElementById('block1').value +
         document.getElementById('block2').value +
@@ -37,12 +36,25 @@ function generateQRCodes() {
         document.getElementById('block5').value +
         document.getElementById('block6').value;
 
-    // Die zusammengesetzte Zahlenreihe anzeigen
     document.getElementById('combinedValue').innerHTML = "Zusammengesetzte Zahlenreihe: <br>" + finalData;
 
-    // QR-Code mit Nayuki QR-Code-Generator erstellen
-    let qrDiv1 = document.getElementById('qrcode1');
     let qr = qrcodegen.QrCode.encodeText(finalData, qrcodegen.QrCode.Ecc.MEDIUM);
-    let svg = qr.toSvgString(4);  // 4 ist die Größe des QR-Codes in Pixeln pro Modul
-    qrDiv1.innerHTML = svg;
+    let canvasElem = document.getElementById('qrcode1');
+    drawCanvas(qr, 4, 4, "#FFFFFF", "#000000", canvasElem);
+}
+
+function drawCanvas(qr, scale, border, lightColor, darkColor, canvas) {
+    if (scale <= 0 || border < 0) {
+        throw new RangeError("Value out of range");
+    }
+    const width = (qr.size + border * 2) * scale;
+    canvas.width = width;
+    canvas.height = width;
+    let ctx = canvas.getContext("2d");
+    for (let y = -border; y < qr.size + border; y++) {
+        for (let x = -border; x < qr.size + border; x++) {
+            ctx.fillStyle = qr.getModule(x, y) ? darkColor : lightColor;
+            ctx.fillRect((x + border) * scale, (y + border) * scale, scale, scale);
+        }
+    }
 }
