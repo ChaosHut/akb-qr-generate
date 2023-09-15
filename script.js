@@ -1,3 +1,5 @@
+"use strict";
+
 function calculateDate() {
     let dateString = document.getElementById('block3').value;
     let dateObj = new Date(dateString.substring(0, 4), dateString.substring(4, 6) - 1, dateString.substring(6, 8));
@@ -41,8 +43,8 @@ function generateQRCodes() {
 
     document.getElementById('combinedValue').innerHTML = "Zusammengesetzte Zahlenreihe: <br>" + finalData;
 
-    let segs = QrSegment.makeNumeric(finalData);
-    let qr = QrCode.encodeSegments(segs, QrCode.Ecc.MEDIUM, 2, 4, -1, false);
+    let segs = QrSegment.makeSegments(finalData);
+    let qr = QrCode.encodeSegments(segs, QrCode.Ecc.MEDIUM, 2, 2, -1, false);
 
     drawCanvas(qr, 8, 4, "#FFFFFF", "#000000", document.getElementById('qrcode1'));
 }
