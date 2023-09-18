@@ -76,3 +76,48 @@ function drawCanvas(qr, scale, border, lightColor, darkColor, canvas) {
         }
     }
 }
+
+
+function incrementBlock2() {
+    let block2Input = document.getElementById('block2');
+    let currentValue = parseInt(block2Input.value, 10);
+    block2Input.value = currentValue + 1;
+}
+
+function decrementBlock2() {
+    let block2Input = document.getElementById('block2');
+    let currentValue = parseInt(block2Input.value, 10);
+    block2Input.value = currentValue - 1;
+}
+
+let usedCodesLibrary = [];
+
+
+
+// Modifying the generateQRCodes function to include the used code check
+function generateQRCodes() {
+    const QrCode = qrcodegen.QrCode;  // Abbreviation
+    const QrSegment = qrcodegen.QrSegment;  // Abbreviation
+
+    let finalData = 
+        document.getElementById('block1').value +
+        document.getElementById('block2').value +
+        document.getElementById('block3').value +
+        document.getElementById('block4').value +
+        document.getElementById('block5').value +
+        document.getElementById('block6').value;
+
+    document.getElementById('combinedValue').innerHTML = "Zusammengesetzte Zahlenreihe: <br>" + finalData;
+
+    let segs = QrSegment.makeSegments(finalData);
+    let qr = QrCode.encodeSegments(segs, QrCode.Ecc.MEDIUM, 2, 2, -1, false);
+
+    drawCanvas(qr, 8, 4, "#FFFFFF", "#000000", document.getElementById('qrcode1'));
+
+    let warningElement = document.getElementById('warningMessage');
+    if (usedCodesLibrary.includes(document.getElementById('block2').value)) {
+        warningElement.innerHTML = 'Dieser QR-Code wurde vermutlich schon benutzt';
+    } else {
+        warningElement.innerHTML = '';
+    }
+}
