@@ -18,14 +18,9 @@
             margin-top: 10px;
             font-size: 16px;
             border-radius: 5px;
-            background-color: #4CAF50;
             color: white;
             border: none;
             cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #45a049;
         }
 
         #generateButton {
@@ -36,6 +31,14 @@
             background-color: #0056b3;
         }
 
+        #manualModeButton, #infoButton {
+            background-color: #4CAF50;
+        }
+
+        #manualModeButton:hover, #infoButton:hover {
+            background-color: #45a049;
+        }
+
     </style>
 </head>
 <body>
@@ -43,7 +46,8 @@
         <canvas id="qrcode1"></canvas>
     </div>
     <button id="generateButton" onclick="generateQRCodes()">Neuen Code erstellen</button>
-    <button onclick="redirectToManual()">Manueller Modus</button>
+    <button id="manualModeButton" onclick="redirectToManual()">Manueller Modus</button>
+    <button id="infoButton" onclick="redirectToInfo()">Info</button>
     <p id="combinedValue"></p>
 
     <script src="script.js"></script>
@@ -74,6 +78,10 @@
 
         function redirectToManual() {
             window.location.href = "manuell.html";
+        }
+
+        function redirectToInfo() {
+            window.location.href = "info.html";
         }
 
         // Automatisches Generieren des QR-Codes beim Laden der Seite
