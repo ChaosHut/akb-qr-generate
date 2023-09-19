@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <script src="qrcodegen-v1.8.0-es5.js"></script>
+    <title>akb-qr-generate</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 10px;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #generateQRButton {
+            background-color: #007BFF;
+        }
+        #generateQRButton:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Block 1 (z.B. 486622235000 + unbekannte Zahl) -->
+    <label>Unbekannte Zahl (muss nicht verändert werden)</label><br/>
+    <input id="block1" placeholder="Block 1" type="text" value="486622235000"/><br/>
+    <!-- Block 2 -->
+    <label>ID des Tickets</label><br/>
+    <input id="block2" placeholder="Zahl Oben auf dem Zettel" type="text" value="1006657"/><br/>
+    <button onclick="incrementBlock2()">+1</button><button onclick="decrementBlock2()">-1</button><br/>
+    <!-- Block 3 (Datum Erstellung) -->
+    <label>Gültig von (Datum)</label><br/>
+    <input id="block3" placeholder="Datum Erstellung" type="text" value="20230828"/>
+    <button onclick="setToday()">Heute</button><br/>
+    <!-- Block 4 (Uhrzeit Erstellung) -->
+    <label>Gültig von (Uhrzeit)</label><br/>
+    <input id="block4" onchange="syncTime()" placeholder="Uhrzeit Erstellung" type="text" value="164551"/>
+    <button onclick="setNow()">Jetzt</button><br/>
+    <!-- Block 5 (Datum des folgetages?) -->
+    <label>Gültig bis (Datum)</label><br/>
+    <input id="block5" placeholder="Datum des folgetages?" readonly="" type="text" value="20230829"/><br/>
+    <!-- Block 6 (Die selbe Uhrzeit-wahrscheinlich für den Folgetag) -->
+    <label>Gültig bis (Uhrzeit)</label><br/>
+    <input id="block6" placeholder="Uhrzeit für den Folgetag" readonly="" type="text" value="164551"/><br/>
+    <button id="generateQRButton" onclick="generateQRCodes()">QR-Codes erstellen</button>
+    <!-- Dies wurde von <div> zu <canvas> geändert -->
+    <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+        <canvas id="qrcode1" style="margin-top: 20px;"></canvas>
+    </div>
+    <div id="combinedValue" style="margin-top: 20px; font-weight: bold;"></div>
+    <script src="script.js"></script>
+</body>
+</html>
