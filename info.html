@@ -7,9 +7,17 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            padding: 10px;
-            background-color: #ffffff;
-            text-align: center;  /* Zentriert den Inhalt */
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        h2 {
+            color: #34495e;
         }
 
         img {
@@ -24,14 +32,14 @@
             margin-top: 10px;
             font-size: 16px;
             border-radius: 5px;
-            background-color: #4CAF50;
+            background-color: black;
             color: white;
             border: none;
             cursor: pointer;
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #444445;
         }
 
     </style>
@@ -39,7 +47,48 @@
 <body>
     <img src="mona.png" alt="Mona">
     <h2>Infoseite</h2>
-    <p>Viele Menschen erfreuen sich an der nüchternen Schönheit eines QR-Codes. Besonders Autofahrer:innen sind häufig QR-Code-Enthusiasten. Für sie ist diese kleine Webseite. Es wird nicht empfohlen die erstellten Kunstwerke einer anderen Verwendung, als der Rezeption als Kunstwerk zuzuführen.</p>
+     <button onclick="redirectToIndex()">Zurück</button>
+    <h1>Haftungsausschluss und Datenschutzhinweis</h1>
+
+    <h2>1. Privater Charakter der Webseite</h2>
+    <p>Diese Webseite ist privat und dient Demonstrationszwecken. Sie ist nicht für die Öffentlichkeit zugänglich. Sie ist nicht in Suchmaschinen gelistet und darf nicht ohne ausdrückliche Genehmigung des Betreibers genutzt oder verbreitet werden.</p>
+
+    <h2>2. Nutzungsbedingungen</h2>
+    <p>Die Nutzung dieser Webseite erfolgt auf eigene Gefahr. Jegliche unbefugte Nutzung ist strengstens untersagt.</p>
+
+    <h2>3. Haftungsausschluss</h2>
+    <p>Der Betreiber dieser Webseite übernimmt keine Haftung für Schäden, die durch die Nutzung der Webseite entstehen können. Dies gilt auch ausdrücklich für jegliche missbräuchliche, illegale oder anderweitig unerlaubte Nutzung durch den Besucher. Der Haftungsausschluss umfasst, ist aber nicht beschränkt auf:</p>
+    <ul>
+        <li>Direkte oder indirekte Schäden</li>
+        <li>Datenverlust</li>
+        <li>Entgangenen Gewinn</li>
+        <li>Andere materielle oder immaterielle Verluste</li>
+        <li>Schäden, die aus der Nutzung der Webseite für illegale oder verbotene Zwecke entstehen</li>
+        <li>Rechtliche Konsequenzen, die sich aus der missbräuchlichen Nutzung der Webseite ergeben</li>
+    </ul>
+    <p>Der Betreiber distanziert sich ausdrücklich von jeglichen illegalen oder missbräuchlichen Aktivitäten, die unter Nutzung dieser Webseite durchgeführt werden könnten. Die Verantwortung für solche Handlungen liegt allein beim Nutzer.</p>
+
+
+    <h2>4. Verantwortung des Nutzers</h2>
+    <p>Der Nutzer ist allein verantwortlich für alle Handlungen, die er auf oder im Zusammenhang mit dieser Webseite vornimmt. Er verpflichtet sich, den Betreiber von allen Ansprüchen Dritter, die aufgrund einer unbefugten oder missbräuchlichen Nutzung entstehen, freizustellen.</p>
+
+    <h2>5. Gewährleistungsausschluss</h2>
+    <p>Alle Informationen und Inhalte auf dieser Webseite werden ohne Gewähr für ihre Richtigkeit, Vollständigkeit oder Aktualität zur Verfügung gestellt.</p>
+
+    <h2>6. Änderungsvorbehalt</h2>
+    <p>Der Betreiber behält sich das Recht vor, den Inhalt dieser Webseite jederzeit ohne vorherige Ankündigung zu ändern, zu ergänzen oder zu löschen.</p>
+
+    <h2>7. Datenschutzhinweis</h2>
+    <p>Diese private Webseite erhebt und verarbeitet keine personenbezogenen Daten von Besuchern, mit Ausnahme technisch notwendiger Daten (z.B. IP-Adressen), die beim Besuch der Seite automatisch übermittelt werden. Diese Daten werden nicht an Dritte weitergegeben und dienen ausschließlich der technischen Bereitstellung der Webseite. Es werden keine Cookies gesetzt oder Analysetools verwendet. Bei Fragen zum Datenschutz kontaktieren Sie bitte den Betreiber der Webseite.</p>
+
+    <h2>8. Keine Dokumentation oder Support</h2>
+    <p>Für diese private Webseite werden keinerlei Dokumentation, Support, Erklärungen oder sonstige Hilfestellungen bereitgestellt.  Es gibt keinerlei Garantie für ihre Funktionalität oder Nutzbarkeit. Nutzer sind allein verantwortlich für das Verständnis und die Nutzung der Webseite.</p>
+
+    <h2>9. Rechtswirksamkeit</h2>
+    <p>Sollten einzelne Bestimmungen dieses Haftungsausschlusses und Datenschutzhinweises unwirksam sein, so berührt dies die Wirksamkeit der übrigen Bestimmungen nicht.</p>
+
+    <p>Datum: August 2024</p>
+
     <button onclick="redirectToIndex()">Zurück</button>
 
     <script>
