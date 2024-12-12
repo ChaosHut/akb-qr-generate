@@ -1,14 +1,3 @@
-
-function toggleDarkMode() {
-    document.body.classList.toggle('dark-mode');
-    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-}
-
-// Check for saved dark mode preference
-if (localStorage.getItem('darkMode') === 'true') {
-    document.body.classList.add('dark-mode');
-}
-
 "use strict";
 
 function calculateDate() {
@@ -55,15 +44,6 @@ function syncTime() {
 
 function generateQRCodes() {
     const QrCode = qrcodegen.QrCode;  // Abbreviation
-    
-    // Feedback Animation
-    const button = document.getElementById('generateQRButton');
-    button.style.opacity = '0.7';
-    button.textContent = 'Generiere...';
-    setTimeout(() => {
-        button.style.opacity = '1';
-        button.textContent = 'QR-Codes erstellen';
-    }, 500);
     const QrSegment = qrcodegen.QrSegment;  // Abbreviation
 
     let finalData = 
@@ -117,15 +97,6 @@ let usedCodesLibrary = [];
 // Modifying the generateQRCodes function to include the used code check
 function generateQRCodes() {
     const QrCode = qrcodegen.QrCode;  // Abbreviation
-    
-    // Feedback Animation
-    const button = document.getElementById('generateQRButton');
-    button.style.opacity = '0.7';
-    button.textContent = 'Generiere...';
-    setTimeout(() => {
-        button.style.opacity = '1';
-        button.textContent = 'QR-Codes erstellen';
-    }, 500);
     const QrSegment = qrcodegen.QrSegment;  // Abbreviation
 
     let finalData = 
