@@ -1,4 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
 html {
   height: 100%;
   width: 100%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  padding: 20px;
+  background-color: #f4f7f6;
+  color: #333;
+  line-height: 1.6;
+}
+
+button {
+  width: 100%;
+  padding: 12px 15px;
+  margin-top: 15px;
+  font-size: 16px;
+  border-radius: 8px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"] {
+  width: calc(100% - 22px); /* Adjust width to account for padding and border */
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+
+#generateButton, #generateQRButton {
+  background-color: #007bff; /* Blauer Akzent für primäre Aktionen */
+}
+
+#generateButton:hover, #generateQRButton:hover {
+  background-color: #0056b3;
+}
+
+#manualModeButton, #infoButton, button {
+  background-color: #5cb85c; /* Grüner Akzent für sekundäre Aktionen */
+}
+
+#manualModeButton:hover, #infoButton:hover, button:hover {
+  background-color: #4cae4c;
+}
+
+#combinedValue {
+  font-size: 14px;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #e9ecef;
+  border-radius: 8px;
+  word-break: break-all;
+}
+
+canvas {
+  display: block;
+  margin: 20px auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+h1, h2 {
+  color: #343a40;
+}
+
+/* Spezifische Stile für info.html */
+.info-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design Anpassungen */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  button, input[type="text"] {
+    font-size: 14px;
+  }
+
+  #combinedValue {
+    font-size: 12px;
+  }
 }

@@ -5,55 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>Startseite</title>
+    <link rel="stylesheet" href="style.css">
     <script src="qrcodegen-v1.8.0-es5.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 10px;
-            background-color: #ffffff;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            font-size: 16px;
-            border-radius: 5px;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        #generateButton {
-            background-color: #007BFF;
-        }
-
-        #generateButton:hover {
-            background-color: #0056b3;
-        }
-
-        #manualModeButton, #infoButton {
-            background-color: #4CAF50;
-        }
-
-        #manualModeButton:hover, #infoButton:hover {
-            background-color: #45a049;
-        }
-    	#combinedValue {
-            font-size: 14px; /* Reduzieren Sie die Größe nach Ihren Wünschen */
-        }
-
-    </style>
 </head>
 <body>
-    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+    <div class="container">
+        <h1>QR-Code Generator</h1>
         <canvas id="qrcode1"></canvas>
+        <button id="generateButton" onclick="generateQRCodes()">Neuen Code erstellen</button>
+        <button id="manualModeButton" onclick="redirectToManual()">Manueller Modus</button>
+        <button id="infoButton" onclick="redirectToInfo()">Disclaimer / Info</button>
+        <p id="combinedValue"></p>
     </div>
-    <button id="generateButton" onclick="generateQRCodes()">Neuen Code erstellen</button>
-    <button id="manualModeButton" onclick="redirectToManual()">Manueller Modus</button>
-    <button id="infoButton" onclick="redirectToInfo()">Disclaimer / Info</button>
-    <p id="combinedValue"></p>
-
     <script src="script.js"></script>
     <script>
         const fixedValue = "486622235000";  // Beispielwert für das erste Textfeld
@@ -73,10 +36,10 @@
             let time = hours + minutes + seconds;
 
             let finalData = fixedValue + randomValue + formattedDate + time + nextDate + time;
-            
+
             let qr = QrCode.encodeText(finalData, QrCode.Ecc.MEDIUM);
             drawCanvas(qr, 8, 4, "#FFFFFF", "#000000", document.getElementById('qrcode1'));
-            
+
             document.getElementById('combinedValue').textContent = "Zusammengesetzte Zahlenreihe: " + finalData;
         }
 
@@ -90,6 +53,22 @@
 
         // Automatisches Generieren des QR-Codes beim Laden der Seite
         window.onload = generateQRCodes;
+
+        // Funktion zum Zeichnen des QR-Codes auf das Canvas-Element (aus script.js übernommen, falls nicht global verfügbar)
+        function drawCanvas(qr, scale, border, lightColor, darkColor, canvas) {
+            if (scale <= 0 || border < 0)
+                throw new RangeError("Value out of range");
+            const width = (qr.size + border * 2) * scale;
+            canvas.width = width;
+            canvas.height = width;
+            let ctx = canvas.getContext("2d");
+            for (let y = -border; y < qr.size + border; y++) {
+                for (let x = -border; x < qr.size + border; x++) {
+                    ctx.fillStyle = qr.getModule(x, y) ? darkColor : lightColor;
+                    ctx.fillRect((x + border) * scale, (y + border) * scale, scale, scale);
+                }
+            }
+        }
     </script>
 </body>
 </html>
